@@ -4,13 +4,13 @@
   * @author  fire
   * @version V1.0
   * @date    2015-xx-xx
-  * @brief   ¿ØÖÆ¶à²ÊÁ÷Ë®µÆ
+  * @brief   æ§åˆ¶å¤šå½©æµæ°´ç¯
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:Ò°»ğ  STM32 F407 ¿ª·¢°å 
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :https://fire-stm32.taobao.com
+  * å®éªŒå¹³å°:é‡ç«  STM32 F407 å¼€å‘æ¿ 
+  * è®ºå›    :http://www.firebbs.cn
+  * æ·˜å®    :https://fire-stm32.taobao.com
   *
   ******************************************************************************
   */
@@ -20,31 +20,31 @@
 void Delay(__IO u32 nCount); 
 
 /**
-  * @brief  Ö÷º¯Êı
-  * @param  ÎŞ
-  * @retval ÎŞ
+  * @brief  ä¸»å‡½æ•°
+  * @param  æ— 
+  * @retval æ— 
   */
 int main(void)
 {
-	/* LED ¶Ë¿Ú³õÊ¼»¯ */
+	/* LED ç«¯å£åˆå§‹åŒ– */
 	LED_GPIO_Config();
 
-	/* ¿ØÖÆLEDµÆ */
+	/* æ§åˆ¶LEDç¯ */
 	while (1)
 	{
-		LED1( ON );			 // ÁÁ 
+		LED1( ON );			 // äº® 
 		Delay(0xFFFFFF);
-		LED1( OFF );		  // Ãğ
+		LED1( OFF );		  // ç­
 
-		LED2( ON );			// ÁÁ 
+		LED2( ON );			// äº® 
 		Delay(0xFFFFFF);
-		LED2( OFF );		  // Ãğ
+		LED2( OFF );		  // ç­
 
-		LED3( ON );			 // ÁÁ 
+		LED3( ON );			 // äº® 
 		Delay(0xFFFFFF);
-		LED3( OFF );		  // Ãğ	
+		LED3( OFF );		  // ç­	
 
-		/*ÂÖÁ÷ÏÔÊ¾ ºìÂÌÀ¶»Æ×ÏÇà°× ÑÕÉ«*/
+		/*è½®æµæ˜¾ç¤º çº¢ç»¿è“é»„ç´«é’ç™½ é¢œè‰²*/
 		LED_RED;
 		Delay(0xFFFFFF);
 		
@@ -71,7 +71,7 @@ int main(void)
 	}
 }
 
-void Delay(__IO uint32_t nCount)	 //¼òµ¥µÄÑÓÊ±º¯Êı
+void Delay(__IO uint32_t nCount)	 //ç®€å•çš„å»¶æ—¶å‡½æ•°
 {
 	for(; nCount != 0; nCount--);
 }
