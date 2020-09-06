@@ -16,8 +16,8 @@ set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_OBJDUMP arm-none-eabi-objdump)
 
 # 设置编译选项
-set(CORE_FLAGS "-mthumb -mthumb-interwork -mcpu=cortex-m4")
-set(CORE_FLASS "${CORE_FLASS} -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb-interwork")
+set(CORE_FLAGS "-mthumb -mthumb-interwork -mcpu=cortex-m4 -gdwarf-2 -MD")
+set(CORE_FLASS "${CORE_FLASS} -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb-interwork")
 set(CORE_FLASS "${CORE_FLASS} --specs=nano.specs --specs=nosys.specs")
 set(CORE_FLASS "${CORE_FLASS} -fdata-sections -ffunction-sections")
 
@@ -27,13 +27,13 @@ set(CMAKE_C_FLAGS "${CORE_FLASS} -Wall -Os -mapcs-frame -mapcs-stack-check ")
 set(CMAKE_C_FLAGS_DEBUG "" CACHE INTERNAL "c compiler flags: Debug")
 set(CMAKE_C_FLAGS_RELEASE "" CACHE INTERNAL "c compiler flags: Release")
 
-set(CMAKE_CXX_FLAGS "${CORE_FLAGS} -fno-rtti -fno-exceptions -fno-builtin -Wall -std=gnu++11 -fdata-sections -ffunction-sections -g -ggdb3" CACHE INTERNAL "cxx compiler flags")
-set(CMAKE_CXX_FLAGS_DEBUG "" CACHE INTERNAL "cxx compiler flags: Debug")
-set(CMAKE_CXX_FLAGS_RELEASE "" CACHE INTERNAL "cxx compiler flags: Release")
+# set(CMAKE_CXX_FLAGS "${CORE_FLAGS} -fno-rtti -fno-exceptions -fno-builtin -Wall -std=gnu++11 -fdata-sections -ffunction-sections -g -ggdb3" CACHE INTERNAL "cxx compiler flags")
+# set(CMAKE_CXX_FLAGS_DEBUG "" CACHE INTERNAL "cxx compiler flags: Debug")
+# set(CMAKE_CXX_FLAGS_RELEASE "" CACHE INTERNAL "cxx compiler flags: Release")
 
-set(CMAKE_ASM_FLAGS "${CORE_FLAGS} -g -ggdb3 -D__USES_CXX" CACHE INTERNAL "asm compiler flags")
-set(CMAKE_ASM_FLAGS_DEBUG "" CACHE INTERNAL "asm compiler flags: Debug")
-set(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm compiler flags: Release")
+# set(CMAKE_ASM_FLAGS "${CORE_FLAGS} -g -ggdb3 -D__USES_CXX" CACHE INTERNAL "asm compiler flags")
+# set(CMAKE_ASM_FLAGS_DEBUG "" CACHE INTERNAL "asm compiler flags: Debug")
+# set(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm compiler flags: Release")
 
 # 对FIND_PROGRAM()起作用，有三种取值，NEVER,ONLY,BOTH,
 # 第一个表示不在你CMAKE_FIND_ROOT_PATH下进行查找，

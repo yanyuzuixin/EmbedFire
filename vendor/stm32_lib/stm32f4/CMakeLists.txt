@@ -33,7 +33,7 @@ set(STM32F4XX_LIB_SRCS
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_iwdg.c
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_lptim.c
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_ltdc.c
-    ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_pwr.c
+    # ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_pwr.c
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_qspi.c
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_rcc.c
     ${STM32F4XX_LIB_DRIVER}/src/stm32f4xx_rng.c
@@ -94,6 +94,7 @@ target_include_directories(stm32f4xx_lib PUBLIC
     ${STM32F4XX_LIB_DRIVER}/inc
     ${STM32F4XX_LIB_CMSIS}/Include
     ${STM32F4XX_LIB_STARTUP}/Include
+    ./cfg
 )
 target_compile_definitions(stm32f4xx_lib PUBLIC
     USE_STDPERIPH_DRIVER

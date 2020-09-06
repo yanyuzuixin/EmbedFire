@@ -1,1 +1,1 @@
-include(stm32_lib)
+add_subdirectory(stm32_lib)
