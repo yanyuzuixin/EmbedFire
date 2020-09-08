@@ -11,17 +11,16 @@ set(lss_file ${proj_name}.lss)
 add_executable(${elf_file}
     $<TARGET_OBJECTS:bsp_led_obj>
     $<TARGET_OBJECTS:proj_led_test_main_obj>
+    # $<TARGET_OBJECTS:stm32f4xx_lib_obj>
 )
 target_link_libraries(${elf_file} PUBLIC stm32f4xx_lib)
-target_link_libraries(${elf_file} PUBLIC -lm -lgcc)
-target_link_options(${elf_file} PUBLIC -T ${STM32F40_41XXX_LD})
-# target_link_options(${elf_file} PUBLIC "-g -Wl,--gc-sections")
-target_link_options(${elf_file} PUBLIC -Os -Wl,-Map=${map_file},--cref,--no-warn-mismatch,--print-memory-usage)
+target_link_options(${elf_file} PUBLIC ${STM32F4_COMMON_LINK_OPTIONS})
+target_link_options(${elf_file} PUBLIC -Wl,-Map=${map_file},--print-memory-usage)
 
 # generate extended listing
 add_custom_target(${lss_file} DEPENDS ${elf_file} COMMAND ${ARM_OBJDUMP_EXECUTABLE} -S ${elf_file} > ${lss_file})
 
 # create binary and hex files
-add_custom_target(${hex_file} DEPENDS ${elf_file} COMMAND ${ARM_OBJCOPY_EXECUTABLE} -Oihex ${elf_file} ${hex_file})
-add_custom_target(${bin_file} DEPENDS ${elf_file} COMMAND ${ARM_OBJCOPY_EXECUTABLE} -Obinary ${elf_file} ${bin_file})
+add_custom_target(${hex_file} DEPENDS ${elf_file} COMMAND ${ARM_OBJCOPY_EXECUTABLE} -O ihex ${elf_file} ${hex_file})
+add_custom_target(${bin_file} DEPENDS ${elf_file} COMMAND ${ARM_OBJCOPY_EXECUTABLE} -O binary ${elf_file} ${bin_file})
 add_custom_target(${proj_name} ALL DEPENDS ${bin_file} ${hex_file} ${lss_file})

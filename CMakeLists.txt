@@ -33,9 +33,44 @@ set(STM32F4XX_LIB_INC
     ${STM32F4XX_LIB_DRIVER}/inc
     ${STM32F4XX_LIB_CMSIS}/Include
     ${STM32F4XX_LIB_STARTUP}/Include
+    ${STM32_LIB_SRC_PATH}/stm32f4/cfg
 )
 
 set(STM32F40_41XXX_LD ${STM32F4XX_LIB_ROOT}/Project/STM32F4xx_StdPeriph_Templates/TrueSTUDIO/STM32F40_41xxx/STM32F417IG_FLASH.ld)
+
+set(STM32F4_COMMON_DEF
+    __UVISION_VERSION="526"
+    __GCC
+    __GCC_VERSION="921"
+    STM32F407xx
+    STM32F40XX
+    USE_STDPERIPH_DRIVER
+)
+
+set(STM32F4_COMMON_OPTIONS
+    -mcpu=cortex-m4
+    -mthumb
+    -MD
+    -w
+    -Os
+    -mapcs-frame
+    -mapcs-stack-check
+    -mthumb-interwork
+    -mcpu=cortex-m4
+    -mthumb
+    -fdata-sections
+    -ffunction-sections
+)
+
+set(STM32F4_COMMON_LINK_OPTIONS
+    -T ${STM32F40_41XXX_LD}
+    -mcpu=cortex-m4
+    -mthumb
+    -mthumb-interwork
+    -nostartfiles
+    -lm
+    -Wl,--gc-sections
+)
 
 add_subdirectory(src)
 add_subdirectory(vendor)

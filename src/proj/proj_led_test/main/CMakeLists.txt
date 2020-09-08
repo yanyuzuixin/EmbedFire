@@ -7,8 +7,7 @@ target_include_directories(proj_led_test_main_obj PRIVATE
     ${STM32F4XX_LIB_INC}
     ../../../hardware/bsp/led
 )
-target_compile_definitions(proj_led_test_main_obj PRIVATE
-    STM32F40_41xxx
-)
+target_compile_definitions(proj_led_test_main_obj PRIVATE ${STM32F4_COMMON_DEF})
+target_compile_options(proj_led_test_main_obj PRIVATE ${STM32F4_COMMON_OPTIONS})
 
 
