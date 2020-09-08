@@ -51,15 +51,15 @@ set(STM32F4_COMMON_OPTIONS
     -mcpu=cortex-m4
     -mthumb
     -MD
-    -w
+    -Wall
+    -Werror
     -Os
-    -mapcs-frame
     -mapcs-stack-check
+    -mapcs-frame
     -mthumb-interwork
-    -mcpu=cortex-m4
-    -mthumb
     -fdata-sections
     -ffunction-sections
+    -fstack-protector-strong
 )
 
 set(STM32F4_COMMON_LINK_OPTIONS
@@ -70,6 +70,10 @@ set(STM32F4_COMMON_LINK_OPTIONS
     -nostartfiles
     -lm
     -Wl,--gc-sections
+    -Wl,-z,relro,-z,now
+    -Wl,-z,noexecstack
+    -fpic
+    -fpie
 )
 
 add_subdirectory(src)

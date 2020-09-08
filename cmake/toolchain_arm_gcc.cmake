@@ -50,3 +50,5 @@ find_program(ARM_SIZE_EXECUTABLE arm-none-eabi-size)
 find_program(ARM_GDB_EXECUTABLE arm-none-eabi-gdb)
 find_program(ARM_OBJCOPY_EXECUTABLE arm-none-eabi-objcopy)
 find_program(ARM_OBJDUMP_EXECUTABLE arm-none-eabi-objdump)
+
+set(CMAKE_SKIP_RPATH TRUE)
