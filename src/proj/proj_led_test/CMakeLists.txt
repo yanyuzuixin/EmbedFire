@@ -9,9 +9,10 @@ set(map_file ${proj_name}.map)
 set(lss_file ${proj_name}.lss)
 
 add_executable(${elf_file}
-    $<TARGET_OBJECTS:bsp_led_obj>
+    $<TARGET_OBJECTS:port_stm32f4_obj>
+    $<TARGET_OBJECTS:bsp_fire407_obj>
+    $<TARGET_OBJECTS:module_proj_led_test_obj>
     $<TARGET_OBJECTS:proj_led_test_main_obj>
-    # $<TARGET_OBJECTS:stm32f4xx_lib_obj>
 )
 target_link_libraries(${elf_file} PUBLIC stm32f4xx_lib)
 target_link_options(${elf_file} PUBLIC ${STM32F4_COMMON_LINK_OPTIONS})
