@@ -1,5 +1,6 @@
 set(SRCS
     port_gpio.c
+    port_isr.c
 )
 add_library(port_stm32f4_obj OBJECT ${SRCS})
 target_include_directories(port_stm32f4_obj PRIVATE ${STM32F4XX_LIB_INC})
